@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My Cricket App</title>
+    <!-- Include Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        /* Custom CSS for setting the background image */
+        body {
+            /* Replace 'background-image-url' with the URL of your background image */
+            background-image: url('https://t4.ftcdn.net/jpg/02/19/80/13/360_F_219801337_3kbasqLvgbUxAGVDH8QS35Sm4SEiPJFJ.jpg');
+            /* Add additional styles for background if needed */
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            /* Set a fixed height to ensure the background covers the entire viewport */
+            min-height: 100vh;
+            /* Center the content vertically */
+            display: flex;
+            align-items: center;
+        }
+        /* Center the button horizontally */
+        .center-button {
+            display: flex;
+            justify-content: center;
+        }
+        /* Lift the heading upwards */
+        .lift-heading {
+            margin-top: -200px;
+            margin-left: 20px;
+        }
+         /* Fading effect using a pseudo-element */
+         body::before {
+            content: "";
+            display: block;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.5); /* Adjust the alpha value to control the opacity */
+            z-index: -1;
+            transition: background 0.5s ease; /* Control the fading duration */
+        }
+        /* On hover, increase the opacity for a stronger fade effect (optional) */
+        body:hover::before {
+            background: rgba(255, 255, 255, 0.3); /* Adjust the alpha value to control the opacity on hover */
+        }
+         /* Custom CSS for the cricket-themed button */
+         .btn-cricket {
+            background-color: #4CAF50; /* Green background color */
+            color: #FFFFFF; /* White text color */
+            padding: 10px 20px; /* Add padding to the button */
+            font-size: 18px; /* Set font size */
+            border: none; /* Remove border */
+            cursor: pointer; /* Add a pointer cursor on hover */
+            border-radius: 8px; /* Add border-radius to create rounded corners */
+            transition: background-color 0.3s; /* Add a smooth transition on background color change */
+            /* Add additional cricket-themed styles if needed */
+        }
+        /* On hover, change the background color */
+        .btn-cricket:hover {
+            background-color: #45a049; /* Darker green on hover */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Dummy content -->
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+                <h1 class="text-danger lift-heading text-center">Welcome to T20 FORECAST</h1>
+                <p class="text-center">Know Where The Game Goes. Predict with cricPred</p>
+            </div>
+        </div>
+
+        <!-- Centered "Predict Score" button -->
+        <!-- Centered "Predict Score" button -->
+        <div class="row">
+            <div class="col-md-6 offset-md-3 center-button">
+                <!-- Stylish cricket-themed button -->
+                <a href="/predictscore" class="btn btn-cricket">Predict Score</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Include Bootstrap JS (Optional, but required for certain features) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

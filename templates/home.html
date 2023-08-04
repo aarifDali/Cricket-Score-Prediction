@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title class="main-title">T20 Score Prediction</title>
+  <!-- Add Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <style>
+    body.bg-fading-image {
+      background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://wallpaperaccess.com/full/780774.jpg') center/cover no-repeat fixed;
+      background-blend-mode: overlay;
+    }
+
+    /* Add any additional styles for the container or other elements as needed */
+    .container {
+      color: #fff; /* Change text color to white for better visibility */
+    }
+
+    /* Optional: Adjust the padding of the container to give some space from the edges */
+    .container {
+      padding-top: 20px;
+      padding-bottom: 20px;
+    }
+
+    /* Optional: Adjust the color of the prediction result text */
+    #prediction-result {
+      color: #000; /* Change to a color that fits well with the background */
+    }
+    /* Add a class for the title */
+    .main-title {
+      color: #ff0000; /* Set the title color to red (#ff0000) - Replace with your desired color */
+      /* Add any additional title styles as needed */
+    }
+  </style>
+</head>
+<body class="bg-fading-image">
+  <div class="container mt-5">
+    <h1>T20 Score Prediction</h1>
+    <form action="{{ url_for('predict_score')}}" method="post">
+      <!-- Batting Team Input -->
+      <div class="form-group">
+        <label for="batting_team">Batting Team:</label>
+        <select class="form-control" id="batting_team" name="batting_team">
+            <option value='Australia'>Australia</option>
+            <option value="India">India</option>
+            <option value="Bangladesh">Bangladesh</option>
+            <option value="New Zealand">New Zealand</option>
+            <option value="South Africa">South Africa</option>
+            <option value="England">England</option>
+            <option value="West Indies">West Indies</option>
+            <option value="Afghanistan">Afghanistan</option>
+            <option value="Pakistan">Pakistan</option>
+            <option value="Sri Lanka">Sri Lanka</option>
+            <!-- Add more options as needed -->
+          </select>
+      </div>
+      <!-- Bowling Team Input -->
+      <div class="form-group">
+        <label for="bowling_team">Bowling Team:</label>
+        <select class="form-control" id="batting_team" name="bowling_team">
+            <option value='Australia'>Australia</option>
+            <option value="India">India</option>
+            <option value="Bangladesh">Bangladesh</option>
+            <option value="New Zealand">New Zealand</option>
+            <option value="South Africa">South Africa</option>
+            <option value="England">England</option>
+            <option value="West Indies">West Indies</option>
+            <option value="Afghanistan">Afghanistan</option>
+            <option value="Pakistan">Pakistan</option>
+            <option value="Sri Lanka">Sri Lanka</option>
+            <!-- Add more options as needed -->
+          </select>
+      </div>
+      <!-- Venue Input -->
+      <div class="form-group">
+        <label for="venue">Venue:</label>
+        <select class="form-control" id="city" name="city">
+            <option selected>City</option>
+                    <option value='Colombo'>Colombo</option>
+                    <option value="Mirpur">Mirpur</option>
+                    <option value="Johannesburg">Johannesburg</option>
+                    <option value="Dubai">Dubai</option>
+                    <option value="Auckland">Auckland</option>
+                    <option value="Cape Town">Cape Town</option>
+                    <option value="London">London</option>
+                    <option value="Pallekele">Pallekele</option>
+                    <option value="Barbados">Barbados</option>
+                    <option value="Sydney">Sydney</option>
+                    <option value="Melbourne">Melbourne</option>
+                    <option value="Durban">Durban</option>
+                    <option value="St Lucia">St Lucia</option>
+                    <option value="Wellington">Wellington</option>
+                    <option value="Lauderhill">Lauderhill</option>
+                    <option value="Hamilton">Hamilton</option>
+                    <option value="Centurion">Centurion</option>
+                    <option value="Manchester">Manchester</option>
+                    <option value="Abu Dhabi">Abu Dhabi</option>
+                    <option value="Mumbai">Mumbai</option>
+                    <option value="Nottingham">Nottingham</option>
+                    <option value="Southampton">Southampton</option>
+                    <option value="Mount Maunganui">Mount Maunganui</option>
+                    <option value="Chittagong">Chittagong</option>
+                    <option value="Kolkata">Kolkata</option>
+                    <option value="Lahore">Lahore</option>
+                    <option value="Delhi">Delhi</option>
+                    <option value="Nagpur">Nagpur</option>
+                    <option value="Chandigarh">Chandigarh</option>
+                    <option value="Adelaide">Adelaide</option>
+                    <option value="Bangalore">Bangalore</option>
+                    <option value="St Kitts">St Kitts</option>
+                    <option value="Cardiff">Cardiff</option>
+                    <option value="Christchurch">Christchurch</option>
+                    <option value="Trinidad">Trinidad</option>
+            <!-- Add more options as needed -->
+          </select>
+      </div>
+      <!-- Current Score Input -->
+      <div class="row">
+        <div class="form-group col-6">
+          <label for="current_score">Current Score:</label>
+          <input type="number" class="form-control" id="current_score" name="current_score" required>
+        </div>
+        <!-- Overs Done Input -->
+        <div class="form-group col-6">
+          <label for="overs_done">Overs Done:</label>
+          <input type="number" step="0.1" class="form-control" id="overs" name="overs" required>
+        </div>
+      </div>
+      <!-- Wickets Fallen Input -->
+      <div class="form-group">
+        <label for="wickets_fallen">Wickets Fallen:</label>
+        <input type="number" class="form-control" id="wickets" name="wickets" required>
+      </div>
+      <!-- Last Five Overs Runs Input -->
+      <div class="form-group">
+        <label for="last_five_overs_runs">Last Five Overs Runs:</label>
+        <input type="number" class="form-control" id="last_five" name="last_five" required>
+      </div>
+      <!-- Submit Button -->
+      <button type="submit" class="btn btn-primary">Predict Score</button>
+    </form>
+  </div>
+   <!-- Place to show the result of the predicted score -->
+   <div class="mt-4">
+    <h4 class="bg-warning text-primary text-center">Predicted Score: {{ results }}</h4>
+    <div id="prediction-result" class="bg-light p-2"></div>
+  </div>
+ 
+  <!-- Add Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
