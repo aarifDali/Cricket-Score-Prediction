@@ -132,6 +132,7 @@ venv.bak/
 data/
 YAML data/
 artifacts/
+logs/
 
 # Spyder project settings
 .spyderproject
