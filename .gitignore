@@ -131,7 +131,7 @@ venv.bak/
 # .gitignore in the 'notebook' directory
 data/
 YAML data/
-artifacts/
+#artifacts/
 logs/
 
 # Spyder project settings
