@@ -38,6 +38,18 @@
     }
 
     });
+    function validateForm() {
+            var current_score = parseInt(document.getElementById("current_score").value);
+            var last_five = parseInt(document.getElementById("last_five").value);
+
+            if (last_five > current_score) {
+                alert("Score of last 5 overs cannot be greater than current score.");
+                document.getElementById("last_five").value = ""; // Clear the lastFiveOversScore field
+                return false; // Prevent form submission
+            }
+
+            return true; // Allow form submission
+          }
   </script>
   <style>
     body.bg-fading-image {
@@ -92,7 +104,7 @@
   
   <div class="container mt-5">
     <h1>T20 Score Prediction</h1>
-    <form action="{{ url_for('predict_score')}}" method="post">
+    <form onsubmit="return validateForm()" action="{{ url_for('predict_score')}}" method="post">
       <!-- Batting Team Input -->
       <div class="form-group">
         <label for="batting_team">Batting Team:</label>
