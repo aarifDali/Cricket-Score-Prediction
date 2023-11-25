@@ -133,6 +133,8 @@ data/
 YAML data/
 # artifacts/
 logs/
+notebook/crict20.csv
+notebook/README.txt
 
 # Spyder project settings
 .spyderproject
